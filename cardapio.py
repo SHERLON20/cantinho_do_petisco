@@ -1043,8 +1043,9 @@ def main(page:ft.Page):
         )
     )
     layout = ft.Container(
-        width=600,
-        height=570,
+        # width=600,
+        # height=570,
+        expand=True,
         content=ft.ResponsiveRow(
         columns=12,
         controls=[
@@ -1070,3 +1071,4 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
