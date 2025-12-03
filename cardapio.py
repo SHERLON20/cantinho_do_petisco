@@ -1,5 +1,4 @@
 import flet as ft
-import pyautogui
 import psycopg2
 def main(page:ft.Page):
     # def consultar_bd(sql):
@@ -169,8 +168,6 @@ def main(page:ft.Page):
     # função para rolar a tela ate o item correto
     def scrool(e):
         if e.control.content.value == "PETISCO":
-            # for _ in range(10):
-            #     pyautogui.scroll(-30)
             tela_principal.content.controls=[
                 logo,
                 select,
@@ -187,8 +184,6 @@ def main(page:ft.Page):
             ]
             tela_principal.update()
         elif e.control.content.value == "PASTEL":
-            # for _ in range(10):
-            #     pyautogui.scroll(-130) 
             tela_principal.content.controls=[
                 logo,
                 select,
@@ -1073,4 +1068,5 @@ def main(page:ft.Page):
     )
     page.add(layout)
 if __name__ == "__main__":
+
     ft.app(target=main,assets_dir='assets')
