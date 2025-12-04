@@ -299,7 +299,7 @@ def main(page:ft.Page):
             bgcolor=ft.Colors.WHITE,
                 content=ft.Container(
                     width=320,
-                    height=220,
+                    height=240,
                     content=ft.Column(
                         controls=[
                             ft.Container(
@@ -313,8 +313,8 @@ def main(page:ft.Page):
                                             content=ft.ResponsiveRow(
                                             controls=[
                                                 ft.Container(col=1),
-                                               drop:= ft.Dropdown(color=ft.Colors.BLACK,width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=3,select_icon_disabled_color=ft.Colors.BLACK,label='QTD',label_style=ft.TextStyle(color=ft.Colors.BLACK,),value=1),
-                                               nome_lanche:= ft.Text(value=f'{e.control.content.controls[1].value} {e.control.content.controls[2].value}'.upper(),text_align=ft.TextAlign.LEFT,size=15,weight=ft.FontWeight.BOLD,col=8,color=ft.Colors.BLACK,),
+                                               drop:= ft.Dropdown(color=ft.Colors.BLACK,width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=4,select_icon_disabled_color=ft.Colors.BLACK,label='QTD',label_style=ft.TextStyle(color=ft.Colors.BLACK,),value=1),
+                                               nome_lanche:= ft.Text(value=f'{e.control.content.controls[1].value} {e.control.content.controls[2].value}'.upper(),text_align=ft.TextAlign.LEFT,size=15,weight=ft.FontWeight.BOLD,col=7,color=ft.Colors.BLACK,),
                                             ],vertical_alignment=ft.CrossAxisAlignment.CENTER
                                         ),
                                         ),
@@ -416,6 +416,7 @@ def main(page:ft.Page):
                             ft.Container(
                                 expand=False,
                                 width=320,
+                                height=240,
                                 bgcolor=ft.Colors.WHITE10,
                                 content=ft.Column(
                                     controls=[
@@ -429,8 +430,8 @@ def main(page:ft.Page):
                                             content=ft.ResponsiveRow(
                                             controls=[
                                                 ft.Container(col=1),
-                                               drop:= ft.Dropdown(width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=3,icon=None,label='QTD',value=1,color=ft.Colors.BLACK,label_style=ft.TextStyle(color=ft.Colors.BLACK,)),
-                                               nome_bebida:= ft.Text(value=f'{e.control.content.controls[1].value}'.upper(),text_align=ft.TextAlign.CENTER,size=15,weight=ft.FontWeight.BOLD,col=8,color=ft.Colors.BLACK,),
+                                               drop:= ft.Dropdown(width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=4,icon=None,label='QTD',value=1,color=ft.Colors.BLACK,label_style=ft.TextStyle(color=ft.Colors.BLACK,)),
+                                               nome_bebida:= ft.Text(value=f'{e.control.content.controls[1].value}'.upper(),text_align=ft.TextAlign.CENTER,size=15,weight=ft.FontWeight.BOLD,col=7,color=ft.Colors.BLACK,),
                                             ],vertical_alignment=ft.CrossAxisAlignment.CENTER
                                         ),
                                         ),
@@ -707,8 +708,8 @@ def main(page:ft.Page):
                 open=True,
                 content_padding=ft.padding.only(top=10,left=10,right=10,bottom=-10),
                 content=ft.Container(
-                    width=320,
-                    height=300,
+                    width=340,
+                    height=370,
                     padding=ft.padding.only(top=10,left=10,right=10,bottom=10),
                     content=ft.Column(
                         controls=[
@@ -1074,5 +1075,6 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
 
 
