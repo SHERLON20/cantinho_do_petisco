@@ -971,7 +971,7 @@ def main(page:ft.Page):
                 ft.Container(
                     offset=ft.Offset(x=0,y=-0.03),
                     col=12,
-                    url='https://wa.me/<557199407781>',
+                    url='https://wa.me/557199407781',
                     content=ft.Column(
                         controls=[
                             ft.Container(
@@ -1074,3 +1074,4 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
