@@ -97,7 +97,7 @@ def main(page:ft.Page):
                         height=150,
                         bgcolor=ft.Colors.WHITE
                     ),
-                    ft.Text(value=texto.upper(),text_align=ft.TextAlign.CENTER,weight=ft.FontWeight.BOLD,italic=True),
+                    ft.Text(value=texto.upper(),text_align=ft.TextAlign.CENTER,weight=ft.FontWeight.BOLD,italic=True,color=ft.Colors.BLACK),
                     ft.ElevatedButton(
                 text='ok',
                 bgcolor=ft.Colors.BLACK,
@@ -313,7 +313,7 @@ def main(page:ft.Page):
                                             content=ft.ResponsiveRow(
                                             controls=[
                                                 ft.Container(col=1),
-                                               drop:= ft.Dropdown(color=ft.Colors.BLACK,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=3,select_icon_disabled_color=ft.Colors.BLACK,label='QTD',label_style=ft.TextStyle(color=ft.Colors.BLACK,),value=1),
+                                               drop:= ft.Dropdown(color=ft.Colors.BLACK,width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=3,select_icon_disabled_color=ft.Colors.BLACK,label='QTD',label_style=ft.TextStyle(color=ft.Colors.BLACK,),value=1),
                                                nome_lanche:= ft.Text(value=f'{e.control.content.controls[1].value} {e.control.content.controls[2].value}'.upper(),text_align=ft.TextAlign.LEFT,size=15,weight=ft.FontWeight.BOLD,col=8,color=ft.Colors.BLACK,),
                                             ],vertical_alignment=ft.CrossAxisAlignment.CENTER
                                         ),
@@ -429,7 +429,7 @@ def main(page:ft.Page):
                                             content=ft.ResponsiveRow(
                                             controls=[
                                                 ft.Container(col=1),
-                                               drop:= ft.Dropdown(options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=3,icon=None,label='QTD',value=1,color=ft.Colors.BLACK,label_style=ft.TextStyle(color=ft.Colors.BLACK,)),
+                                               drop:= ft.Dropdown(width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=3,icon=None,label='QTD',value=1,color=ft.Colors.BLACK,label_style=ft.TextStyle(color=ft.Colors.BLACK,)),
                                                nome_bebida:= ft.Text(value=f'{e.control.content.controls[1].value}'.upper(),text_align=ft.TextAlign.CENTER,size=15,weight=ft.FontWeight.BOLD,col=8,color=ft.Colors.BLACK,),
                                             ],vertical_alignment=ft.CrossAxisAlignment.CENTER
                                         ),
@@ -1072,4 +1072,5 @@ def main(page:ft.Page):
     )
     page.add(layout)
 if __name__ == "__main__":
+
     ft.app(target=main,assets_dir='assets')
