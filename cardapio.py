@@ -408,8 +408,8 @@ def main(page:ft.Page):
         tela_aberta = ft.AlertDialog(
             modal=True,
             barrier_color=ft.Colors.with_opacity(0.5, ft.Colors.BLACK),
-            inset_padding=ft.padding.symmetric(vertical=100),
-            content_padding=ft.padding.only(bottom=10,left=10,right=10,top=20),
+            # inset_padding=ft.padding.symmetric(vertical=100),
+            # content_padding=ft.padding.only(bottom=10,left=10,right=10,top=20),
             bgcolor=ft.Colors.WHITE,
                 content=ft.Column(
                         controls=[
@@ -1075,6 +1075,7 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
 
 
 
