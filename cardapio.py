@@ -61,7 +61,7 @@ def main(page:ft.Page):
                             ]
     page.bgcolor = ft.Colors.BLACK
     page.padding = 0
-    page.theme_mode = ft.ThemeMode.DARK
+    page.theme_mode = ft.ThemeMode.LIGHT
     # page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     # função para voltar a tela principal da aplicação 
     def voltar_pricipal(e):
@@ -1074,4 +1074,5 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
 
