@@ -238,13 +238,11 @@ def main(page:ft.Page):
         fundo_vermelho = False
         if e.control.shadow.color == ft.Colors.RED:
             fundo_vermelho = True
-        valor_lanche=e.control.content.controls[2].value
-        lista = valor_lanche.split()
-        numero_convertido= lista[1].replace(",",".")
-        numero=float(numero_convertido)
-        def fechar_tela(e):
-            tela_aberta.open=False
-            page.update()
+        string_valor = e.control.content.controls[2].value
+        valor_separado = string_valor.split()
+        valor_solto = valor_separado[1]
+        valor_float = valor_solto.replace(',','.')
+        valor_float_final = float(valor_float)
         def excluir_do_carrinho(e):
             lista_string = e.control.parent.controls[0].content.value.split()
             total.spans[1].text -= float(lista_string[-1])
@@ -254,18 +252,15 @@ def main(page:ft.Page):
                     lista_lanches.content.controls.remove(item)
                     lista_lanches.update()
                     break
+        def fechar_tela(e):
+            tela_aberta_PEP.open=False
+            tela_aberta_PEP.update()
+            page.update()
         def adicionar_ao_carrinho(e):
-            valor_reais = int(drop.value) * numero
-            nome_lanche_separado = nome_lanche.value.split()
-            str_subs=''
-            for txt in nome_lanche_separado:
-                if txt == "R$":
-                    break
-                else:
-                    str_subs+=f'{txt} '
-            total.spans[1].text += int(drop.value) * numero
+            valor_reais = int(drop.value) * valor_float_final
+            total.spans[1].text += float(valor_reais)
             total.update()
-            string=f'{drop.value} - pastel\n{str_subs}R$ {valor_reais}' if fundo_vermelho == True else f'{drop.value}-petisco\n{str_subs}R$ {valor_reais}'
+            string=f"{drop.value} - PASTEL\n{nome_bebida.value} R$ {valor_reais}" if fundo_vermelho == True else f"{drop.value} - PETISCO\n{nome_bebida.value} R$ {valor_reais}"
             lista_lanches.content.controls.append(ft.Container(
                     bgcolor=ft.Colors.WHITE,
                     padding=ft.padding.all(15),
@@ -275,7 +270,7 @@ def main(page:ft.Page):
                         ft.Container(
                             col=10,
                     padding=ft.padding.symmetric(vertical=10,horizontal=20),
-                    content=ft.Text(value=string,size=15,weight=ft.FontWeight.BOLD,text_align=ft.TextAlign.CENTER),
+                    content=ft.Text(value=string,size=15,weight=ft.FontWeight.BOLD,text_align=ft.TextAlign.CENTER,color=ft.Colors.BLACK),
                     bgcolor=ft.Colors.WHITE,
                     shadow=ft.BoxShadow(blur_radius=10,color=ft.Colors.BLACK),
                     border_radius=ft.border_radius.all(10),
@@ -292,32 +287,38 @@ def main(page:ft.Page):
                 )
                 ))
             lista_lanches.update()
-            mensagem_confirmado(texto='pedido adicionado ao carrinho com sucesso!')
-        tela_aberta = ft.AlertDialog(
-            #inset_padding=ft.padding.symmetric(vertical=130),
-            #content_padding=ft.padding.all(10),
+            mensagem_confirmado(texto='pedido adicionada ao carrinho com sucesso!')
+        tela_aberta_PEP = ft.AlertDialog(
+            # modal=True,
+            # barrier_color=ft.Colors.with_opacity(0.5, ft.Colors.BLACK),
+            inset_padding=ft.padding.symmetric(vertical=70),
+            # content_padding=ft.padding.only(bottom=10,left=10,right=10,top=20),
             bgcolor=ft.Colors.WHITE,
-                content=ft.Container(
-                    width=320,
-                    height=240,
-                    content=ft.Column(
+                content=ft.Column(
                         controls=[
                             ft.Container(
-                                expand=False,
+                                expand=True,
+                                width=320,
+                                height=240,
                                 bgcolor=ft.Colors.WHITE10,
                                 content=ft.Column(
                                     controls=[
-                                        ft.Text(value='PASTEL:'.upper()if fundo_vermelho == True else 'PETISCO',size=20,weight=ft.FontWeight.BOLD,color=ft.Colors.BLACK,italic=True),
-                                        ft.Container(
+                                       porcao_ou_bebida:= ft.Text(value='pastel'.upper() if fundo_vermelho == True else 'petisco'.upper(),
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=20,weight=ft.FontWeight.BOLD,
+                                                color=ft.Colors.BLACK,
+                                                ),
+                                                ft.Container(
                                             alignment=ft.alignment.top_center,
                                             content=ft.ResponsiveRow(
                                             controls=[
                                                 ft.Container(col=1),
-                                               drop:= ft.Dropdown(color=ft.Colors.BLACK,width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=4,select_icon_disabled_color=ft.Colors.BLACK,label='QTD',label_style=ft.TextStyle(color=ft.Colors.BLACK,),value=1),
-                                               nome_lanche:= ft.Text(value=f'{e.control.content.controls[1].value} {e.control.content.controls[2].value}'.upper(),text_align=ft.TextAlign.LEFT,size=15,weight=ft.FontWeight.BOLD,col=7,color=ft.Colors.BLACK,),
+                                               drop:= ft.Dropdown(width=100,options=[ft.dropdown.Option(text=f'{num}')for num in range(1,5)],col=4,icon=None,label='QTD',value=1,color=ft.Colors.BLACK,label_style=ft.TextStyle(color=ft.Colors.BLACK,)),
+                                               nome_bebida:= ft.Text(value=f'{e.control.content.controls[1].value}'.upper(),text_align=ft.TextAlign.CENTER,size=15,weight=ft.FontWeight.BOLD,col=7,color=ft.Colors.BLACK,),
                                             ],vertical_alignment=ft.CrossAxisAlignment.CENTER
                                         ),
                                         ),
+                                       preco:= ft.Text(value=f'preço: {e.control.content.controls[2].value}'.upper(),text_align=ft.TextAlign.CENTER,size=15,weight=ft.FontWeight.BOLD,offset=ft.Offset(x=0,y=1.5),color=ft.Colors.BLACK,)
                                     ],horizontal_alignment=ft.CrossAxisAlignment.CENTER,spacing=5
                                 )
                             ),
@@ -343,12 +344,10 @@ def main(page:ft.Page):
                             )
                         ],horizontal_alignment=ft.CrossAxisAlignment.CENTER,alignment=ft.MainAxisAlignment.SPACE_BETWEEN,expand=True
                     ),
-                ),
                 open=True
             )
         
-        page.open(tela_aberta)
-        page.expand = True
+        page.open(tela_aberta_PEP)
 #     # função para mostrar a descrição da bibida ou porção e colocar na lista de pedidos.
 
     def tela_bebida_ou_porcao(e):
@@ -1075,6 +1074,7 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
 
 
 
