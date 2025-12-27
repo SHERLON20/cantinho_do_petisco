@@ -287,7 +287,7 @@ def main(page:ft.Page):
                 )
                 ))
             lista_lanches.update()
-            mensagem_confirmado(texto='pedido adicionada ao carrinho com sucesso!')
+            mensagem_confirmado(texto='pedido adicionado ao carrinho com sucesso!')
         tela_aberta_PEP = ft.AlertDialog(
             # modal=True,
             # barrier_color=ft.Colors.with_opacity(0.5, ft.Colors.BLACK),
@@ -403,7 +403,7 @@ def main(page:ft.Page):
                 )
                 ))
             lista_lanches.update()
-            mensagem_confirmado(texto='pedido adicionada ao carrinho com sucesso!')
+            mensagem_confirmado(texto='pedido adicionado ao carrinho com sucesso!')
         tela_aberta = ft.AlertDialog(
             # modal=True,
             # barrier_color=ft.Colors.with_opacity(0.5, ft.Colors.BLACK),
@@ -1074,6 +1074,7 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
 
 
 
