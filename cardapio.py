@@ -542,11 +542,11 @@ def main(page:ft.Page):
                         dados = (f"{num_mesa.value}", string_pedido, True, False, f"{total.spans[1].text}")
                         # Conexão (use os mesmos parâmetros do seu script)
                         conn = psycopg2.connect(
-                            host="dpg-d4nkrk15pdvs73cpfgq0-a.oregon-postgres.render.com",
+                            host="dpg-d57jh96uk2gs73d3dbk0-a.oregon-postgres.render.com",
                             port="5432",
-                            database="bd_sherlon",
-                            user="bd_sherlon_user",
-                            password="2bgRgz6OxNX67YfCES8WlP05k6fMUvvM"
+                            database="bd_sherlon_ulac",
+                            user="bd_sherlon_ulac_user",
+                            password="synMXbst2UAOQJQJMWKNvUlRFHSGnfBd"
                         )
                         cursor = conn.cursor()
                         # Comando SQL
@@ -1074,6 +1074,7 @@ def main(page:ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main,assets_dir='assets')
+
 
 
 
